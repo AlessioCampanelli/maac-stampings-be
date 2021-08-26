@@ -112,7 +112,7 @@ The principal in our application is `Main`.
 4. `$ docker-compose up -d --no-deps --build Main` or build other docker services
 5. `$ docker-compose restart`
 
-in case of expiration of HTTPS certs, you can run `init-letsencrypt.sh` script to regenerate it!
+in case of expiration of HTTPS certs, you can run `sudo ./init-letsencrypt.sh` script to regenerate it!
 
 ## Running the app
 

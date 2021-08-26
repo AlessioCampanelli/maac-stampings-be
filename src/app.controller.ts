@@ -10,7 +10,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('stampings')
+  @Get('v1/api/stampings')
   getStampings(): string {
     console.log('stampings arriveeeed');
     return this.appService.getHello();
