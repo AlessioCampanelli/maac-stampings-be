@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   main:
@@ -31,7 +31,7 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
       - ./dist-fe:/usr/share/nginx/html
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
   certbot:
     image: certbot/certbot
     volumes:
@@ -53,6 +53,6 @@ services:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     ports:
       - "${DB_PORT}:${DB_PORT}"
-    command: [--auth]  
+    command: [--auth]
 volumes:
   pgdata:
