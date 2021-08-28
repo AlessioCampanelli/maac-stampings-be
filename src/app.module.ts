@@ -4,10 +4,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Stamping, StampingSchema } from './schemas/stampings.schema';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    AuthModule,
     MongooseModule.forRoot(
       'mongodb://' +
       process.env.DB_USER +
