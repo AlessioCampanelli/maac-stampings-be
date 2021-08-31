@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Query, Post, Request, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
@@ -38,8 +38,8 @@ export class AppController {
 
   @UseGuards(JwtAuthGuard)
   @Get('list-stampings')
-  async getListStampings(@Request() req) {
-    let response = await this.authService.getStampings(req);
+  async getListStampings(@Query('id_user') id_user) {
+    let response = await this.authService.getStampings(id_user);
     return response;
   }
 

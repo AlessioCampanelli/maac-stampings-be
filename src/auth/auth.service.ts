@@ -69,13 +69,10 @@ export class AuthService {
       });    
     }
 
-    async getStampings(req: any): Promise<any> {
-      const payload = { id_user: req.body.id_user };
+    async getStampings(id_user: string): Promise<any> {
       return new Promise(resolve => {
         let controller = new AuhtFirebaseController();
-        controller.listStampings(payload.id_user).then(response => {
-
-          console.log('stampings response: ', response[0]._fieldsProto);
+        controller.listStampings(id_user).then(response => {
 
           var stampings = [];
 
