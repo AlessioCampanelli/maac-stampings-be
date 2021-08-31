@@ -74,8 +74,41 @@ export class AuthService {
       return new Promise(resolve => {
         let controller = new AuhtFirebaseController();
         controller.listStampings(payload.id_user).then(response => {
+
+          console.log('stampings response: ', response[0]._fieldsProto);
+
+          var stampings = [];
+
+          response.forEach(stamp => {
+            let id_doc = stamp._ref._path.segments.length > 1 ? stamp._ref._path.segments[1] : '';
+            let fieldsProto = stamp._fieldsProto;
+
+            let startStamp = fieldsProto.start_stamped_time;
+            let endStamp = fieldsProto.end_stamped_time;
+            let id_user = fieldsProto.id_user;
+            let subtitle = fieldsProto.subtitle;
+            let start_time = fieldsProto.start_time;
+            let end_time = fieldsProto.end_time;
+            let title = fieldsProto.title;
+            let address = fieldsProto.address;
+
+            let st = {
+              id_doc: id_doc,
+              start_stamped_time: startStamp.timestampValue != undefined ? startStamp.timestampValue.seconds : null,
+              end_stamped_time: endStamp.timestampValue != undefined ? endStamp.timestampValue.seconds : null,
+              subtitle: subtitle != undefined ? subtitle.stringValue : null,
+              start_time: start_time.timestampValue != undefined ? start_time.timestampValue.seconds : null,
+              end_time: end_time.timestampValue != undefined ? end_time.timestampValue.seconds : null,
+              id_user: id_user != undefined ? id_user.stringValue : null,
+              title: title != undefined ? title.stringValue : null,
+              address: address != undefined ? address.stringValue : null
+            }
+
+            stampings.push(st);
+          });
+
           resolve({
-            stampings: response
+            stampings: stampings// response
           });
           return;
         });  

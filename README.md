@@ -104,6 +104,8 @@ to change content in Main Container:
 `$ docker-compose up -d --no-deps --build <YOUR_SERVICE>` to build single service.
 The principal in our application is `Main`.
 
+To rebuild this image you must use `docker-compose build` or `docker-compose up --build`
+
 ## Deploy app
 
 1. connect to EC2 AWS instance (check security group for validating your IP address) via terminal: `ssh -i "path/your.pem" your-user@xxxxxx.us-east-2.compute.amazonaws.com`
