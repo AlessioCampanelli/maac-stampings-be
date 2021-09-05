@@ -76,6 +76,8 @@ export class AuthService {
 
           var stampings = [];
 
+          console.log('respssss: ', response);
+
           response.forEach(stamp => {
             let id_doc = stamp._ref._path.segments.length > 1 ? stamp._ref._path.segments[1] : '';
             let fieldsProto = stamp._fieldsProto;
@@ -88,6 +90,8 @@ export class AuthService {
             let end_time = fieldsProto.end_time;
             let title = fieldsProto.title;
             let address = fieldsProto.address;
+            let latitude = fieldsProto.latitude;
+            let longitude = fieldsProto.longitude;
 
             let st = {
               id_doc: id_doc,
@@ -98,14 +102,16 @@ export class AuthService {
               end_time: end_time.timestampValue != undefined ? end_time.timestampValue.seconds : null,
               id_user: id_user != undefined ? id_user.stringValue : null,
               title: title != undefined ? title.stringValue : null,
-              address: address != undefined ? address.stringValue : null
+              address: address != undefined ? address.stringValue : null,
+              latitude: latitude != undefined ? latitude.doubleValue : null,
+              longitude: longitude != undefined ? longitude.doubleValue : null
             }
 
             stampings.push(st);
           });
 
           resolve({
-            stampings: stampings// response
+            stampings: stampings
           });
           return;
         });  

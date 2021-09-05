@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString } from "class-validator";
+import { IsNumber, IsString } from "class-validator";
 import firebase from 'firebase-admin';
 
 export class StampingDto {
@@ -30,4 +30,10 @@ export class StampingDto {
 
     @ApiProperty() @IsString()
     end_stamped_time: string;
+
+    @ApiProperty() @IsNumber()
+    latitude: number;
+
+    @ApiProperty() @IsNumber()
+    longitude: number;
 }
