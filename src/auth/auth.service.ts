@@ -76,8 +76,6 @@ export class AuthService {
 
           var stampings = [];
 
-          console.log('respssss: ', response);
-
           response.forEach(stamp => {
             let id_doc = stamp._ref._path.segments.length > 1 ? stamp._ref._path.segments[1] : '';
             let fieldsProto = stamp._fieldsProto;
@@ -92,6 +90,8 @@ export class AuthService {
             let address = fieldsProto.address;
             let latitude = fieldsProto.latitude;
             let longitude = fieldsProto.longitude;
+            let url_pdf = fieldsProto.url_pdf;
+            let name_pdf = fieldsProto.name_pdf;
 
             let st = {
               id_doc: id_doc,
@@ -104,7 +104,9 @@ export class AuthService {
               title: title != undefined ? title.stringValue : null,
               address: address != undefined ? address.stringValue : null,
               latitude: latitude != undefined ? latitude.doubleValue : null,
-              longitude: longitude != undefined ? longitude.doubleValue : null
+              longitude: longitude != undefined ? longitude.doubleValue : null,
+              url_pdf: url_pdf != undefined ? url_pdf.stringValue : null,
+              name_pdf: name_pdf != undefined ? name_pdf.stringValue : null,
             }
 
             stampings.push(st);

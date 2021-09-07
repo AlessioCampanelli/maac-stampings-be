@@ -36,4 +36,10 @@ export class StampingDto {
 
     @ApiProperty() @IsNumber()
     longitude: number;
+
+    @ApiProperty() @IsString()
+    url_pdf: string;
+
+    @ApiProperty() @IsString()
+    name_pdf: string;
 }

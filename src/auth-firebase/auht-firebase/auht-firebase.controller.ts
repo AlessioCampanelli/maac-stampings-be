@@ -48,7 +48,9 @@ export class AuhtFirebaseController {
                 end_time: (stamping.end_time != null && stamping.end_time != "") ? firebase.firestore.Timestamp.fromDate(new Date(stamping.end_time)).toDate() : null,
                 start_stamped_time: (stamping.start_stamped_time != null && stamping.start_stamped_time != "") ? firebase.firestore.Timestamp.fromDate(new Date(stamping.start_stamped_time)).toDate() : null,
                 end_stamped_time: (stamping.end_stamped_time != null && stamping.end_stamped_time != "") ? firebase.firestore.Timestamp.fromDate(new Date(stamping.end_stamped_time)).toDate() : null,
-                id_user: stamping.id_user
+                id_user: stamping.id_user,
+                url_pdf: stamping.url_pdf,
+                name_pdf: stamping.name_pdf
             });
             resolve(true);
         });

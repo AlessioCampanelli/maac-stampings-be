@@ -19,6 +19,12 @@ export class Stamping {
 
     @Prop()
     checkout_stamped: Date;
+
+   @Prop()
+   url_pdf: string;
+   
+   @Prop()
+   name_pdf: string;
 }
 
 export const StampingSchema = SchemaFactory.createForClass(Stamping);
